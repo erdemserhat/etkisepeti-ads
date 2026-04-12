@@ -1,7 +1,7 @@
 services:
-  frontend:
+  ads-frontend:
     build: .
-    container_name: etkisepeti-frontend
+    container_name: ads-frontend
     ports:
       - "127.0.0.1:3006:3000"
       - "10.8.0.1:3006:3000"
