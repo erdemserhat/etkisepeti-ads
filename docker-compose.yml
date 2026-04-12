@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build: .
+    container_name: etkisepeti-frontend
+    ports:
+      - "127.0.0.1:3006:3000"
+      - "10.8.0.1:3006:3000"
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - internal_net
+
+networks:
+  internal_net:
+    external: true
