@@ -24,7 +24,7 @@ export function CategoryServiceCard({ category, accentColor }: Props) {
       type="button"
       onClick={openEtkisepetiCategory}
       className="group flex w-full cursor-pointer items-center gap-3 rounded-2xl border border-neutral-200/80 bg-white p-3 text-left font-inherit shadow-sm transition hover:border-brand-primary/30 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary md:gap-4 md:p-4"
-      aria-label={`${category.name} — open on Etkisepeti (new tab)`}
+      aria-label={`${category.name}: Etkisepeti sitesinde yeni sekmede aç`}
     >
       <span
         className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-lg text-white md:h-14 md:w-14 md:text-xl"
@@ -37,9 +37,9 @@ export function CategoryServiceCard({ category, accentColor }: Props) {
         <p className="font-bold leading-tight text-neutral-900 transition group-hover:text-brand-primary md:text-base">
           {category.name}
         </p>
-        <p className="mt-0.5 text-xs text-neutral-500">Paketler</p>
+        <p className="mt-0.5 text-xs text-neutral-500">Paket bilgisi</p>
         <p className="mt-1 text-xs text-neutral-400">
-          {category.hasPackage ? "Mevcut" : "Çok yakında"}
+          {category.hasPackage ? "Ana sitede" : "Paket yok"}
         </p>
       </div>
       <span

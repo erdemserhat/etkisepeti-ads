@@ -17,15 +17,14 @@ export default async function HomePage() {
         className={`flex flex-1 flex-col py-10 ${PAGE_CONTENT_GUTTER}`}
       >
         <p className="max-w-xl text-sm text-neutral-600">
-          Set{" "}
           <code className="rounded bg-neutral-200 px-1 py-0.5 text-foreground">
             ETKISEPETI_INTERNAL_KEY
           </code>{" "}
-          in{" "}
+          değerini{" "}
           <code className="rounded bg-neutral-200 px-1 py-0.5 text-foreground">
             .env
           </code>{" "}
-          (see{" "}
+          içinde tanımlayın (örnek için{" "}
           <code className="rounded bg-neutral-200 px-1 py-0.5 text-foreground">
             .env.example
           </code>
@@ -40,7 +39,7 @@ export default async function HomePage() {
   try {
     platforms = filterHomePlatforms(await fetchPlatforms());
   } catch (e) {
-    error = e instanceof Error ? e.message : "Request failed";
+    error = e instanceof Error ? e.message : "İstek tamamlanamadı";
   }
 
   if (error) {

@@ -11,7 +11,7 @@ import {
 import { PAGE_CONTENT_GUTTER } from "@/lib/pageLayout";
 
 /** Shown under every platform hero title (not API `description`). */
-const PLATFORM_HERO_TAGLINE = "Etkisepeti Profesyonel Hizmetleri";
+const PLATFORM_HERO_TAGLINE = "Hizmet kategorileri ve yönlendirmeler";
 
 export const dynamic = "force-dynamic";
 

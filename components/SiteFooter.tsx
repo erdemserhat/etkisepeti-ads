@@ -62,7 +62,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#20bd5a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
                 >
                   <i className="fa-brands fa-whatsapp text-lg" aria-hidden />
-                  Canlı destek
+                  WhatsApp
                 </a>
                 <a
                   href={TELEGRAM_HREF}

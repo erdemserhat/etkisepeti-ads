@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Platformlar",
-  description: "Reklam platformlarını ve kategorilerini keşfedin.",
+  description: "Reklam platformları listesi ve kategori yönlendirmeleri.",
   manifest: "/site.webmanifest",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

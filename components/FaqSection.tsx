@@ -1,33 +1,33 @@
 const FAQ_ITEMS = [
   {
-    id: "reliable",
-    question: "Etkisepeti güvenilir mi?",
+    id: "overview",
+    question: "Bu sayfada ne var?",
     answer:
-      "Etkisepeti, dijital reklam ve kampanya hizmetlerinde şeffaf ve güvenilir süreçler sunar. Panel üzerinden siparişlerinizi takip edebilir; iletişim kanallarımızdan güvenilir yardım alabilirsiniz.",
+      "Reklam platformları listelenir; bir platform seçildiğinde ilgili hizmet kategorilerine yönlendirme yapılır. Sipariş ve hesap işlemleri ana sitedeki akışa bağlıdır.",
   },
   {
     id: "support",
-    question: "İşlem sonrası destek güvenilir mi?",
+    question: "Teslimat sonrası sorularım için ne yapabilirim?",
     answer:
-      "Evet. 7/24 canlı destek ile teslimattan sonra da yanınızdayız; kullanım ve teknik konularda güvenilir yardım sunarız. Kampanya veya hizmete özel süreler için sipariş ekranındaki veya iletişim sayfalarındaki bilgileri kontrol edebilirsiniz.",
+      "İletişim bilgileri sayfa altında yer alır. Yanıt süreleri kanala ve yoğunluğa göre değişebilir. Hizmete özel süre ve koşullar sipariş veya kampanya metinlerinde belirtilir.",
   },
   {
-    id: "payment",
-    question: "Süreç güvenilir şekilde mi işler?",
+    id: "technical",
+    question: "Bağlantılar nasıl kuruluyor?",
     answer:
-      "Evet. Güvenilir sağlayıcılar ve HTTPS ile korunan bağlantılar kullanılır. Akış sektör standartlarına uygun ve güvenilir biçimde tamamlanır.",
+      "Bu site HTTPS kullanır. Üçüncü taraf sayfalara geçişler, seçtiğiniz bağlantı üzerinden tarayıcınızda açılır; oradaki koşullar ilgili siteye aittir.",
   },
   {
     id: "why",
-    question: "Neden Etkisepeti'yi seçmeliyim?",
+    question: "Platformlar arasında nasıl gezebilirim?",
     answer:
-      "Geniş hizmet yelpazesi, net paket seçenekleri ve kullanıcı dostu sipariş akışı ile kampanyalarınızı tek yerden yönetmenizi hedefleriz. İhtiyacınıza uygun çözümleri karşılaştırıp hızlıca satın alabilirsiniz.",
+      "Ana sayfadan bir platform seçebilir veya platform sayfasında sekmelerle kategorileri filtreleyebilirsiniz. Paket ayrıntıları ve satın alma adımları yönlendirildiğiniz sayfada yer alır.",
   },
   {
     id: "coupon",
     question: "Kupon kodunu tekrar kullanabilir miyim?",
     answer:
-      "Kupon kuralları kampanyaya göre değişir. Çoğu kod tek seferlik veya belirli bir tarih/koşula bağlıdır. Kodu uygulamadan önce kampanya şartlarını mutlaka okuyun; geçerlilik ve kullanım limiti orada belirtilir.",
+      "Kupon kuralları kampanyaya göre değişir; çoğu kod tek kullanımlık veya tarih/koşula bağlı olabilir. Uygulamadan önce kampanya şartlarını okuyun; geçerlilik ve limit orada yazılır.",
   },
 ] as const;
 
