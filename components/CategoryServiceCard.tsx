@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+
 import { getCategoryIconClass } from "@/lib/platform-utils";
 import type { CategoryWithAction } from "@/lib/platform-utils";
 
@@ -8,15 +9,22 @@ type Props = {
 };
 
 export function CategoryServiceCard({ category, accentColor }: Props) {
-  const href = `https://etkisepeti.com/${category.slug}`;
   const iconClass = getCategoryIconClass(category.actionKey);
 
+  const openEtkisepetiCategory = () => {
+    window.open(
+      `https://etkisepeti.com/${category.slug}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+
   return (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex items-center gap-3 rounded-2xl border border-neutral-200/80 bg-white p-3 shadow-sm transition hover:border-brand-primary/30 hover:shadow-md md:gap-4 md:p-4"
+    <button
+      type="button"
+      onClick={openEtkisepetiCategory}
+      className="group flex w-full cursor-pointer items-center gap-3 rounded-2xl border border-neutral-200/80 bg-white p-3 text-left font-inherit shadow-sm transition hover:border-brand-primary/30 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary md:gap-4 md:p-4"
+      aria-label={`${category.name} — open on Etkisepeti (new tab)`}
     >
       <span
         className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-lg text-white md:h-14 md:w-14 md:text-xl"
@@ -40,6 +48,6 @@ export function CategoryServiceCard({ category, accentColor }: Props) {
       >
         <i className="fa-solid fa-arrow-right text-sm" />
       </span>
-    </Link>
+    </button>
   );
 }
