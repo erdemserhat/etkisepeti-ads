@@ -1,5 +1,6 @@
 "use client";
 
+import { sendGoogleAdsCategoryOutboundConversion } from "@/lib/google-ads";
 import { getCategoryIconClass } from "@/lib/platform-utils";
 import type { CategoryWithAction } from "@/lib/platform-utils";
 
@@ -12,6 +13,7 @@ export function CategoryServiceCard({ category, accentColor }: Props) {
   const iconClass = getCategoryIconClass(category.actionKey);
 
   const openEtkisepetiCategory = () => {
+    sendGoogleAdsCategoryOutboundConversion();
     window.open(
       `https://etkisepeti.com/${category.slug}`,
       "_blank",
