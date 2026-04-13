@@ -7,9 +7,15 @@ type Props = {
   platformSlug: string;
   actions: PlatformAction[];
   selectedKey: string;
+  accentColor: string;
 };
 
-export function PlatformHeroTabs({ platformSlug, actions, selectedKey }: Props) {
+export function PlatformHeroTabs({
+  platformSlug,
+  actions,
+  selectedKey,
+  accentColor,
+}: Props) {
   const sorted = [...actions].sort((a, b) => a.orderIndex - b.orderIndex);
   const base = `/platforms/${platformSlug}`;
 
@@ -24,7 +30,7 @@ export function PlatformHeroTabs({ platformSlug, actions, selectedKey }: Props) 
 
   return (
     <div
-      className="flex flex-nowrap gap-1 overflow-x-auto overflow-y-hidden overscroll-x-contain rounded-xl bg-neutral-800/70 p-1 [scrollbar-width:thin] sm:gap-1.5 sm:rounded-2xl sm:p-1.5"
+      className="scrollbar-hidden flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain rounded-[1.35rem]"
       role="tablist"
       aria-label="Hizmet filtreleri"
     >
@@ -36,11 +42,19 @@ export function PlatformHeroTabs({ platformSlug, actions, selectedKey }: Props) 
             href={href}
             role="tab"
             aria-selected={active}
-            className={`min-h-9 shrink-0 rounded-lg px-2.5 py-1.5 text-center text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent sm:min-h-[2.5rem] sm:rounded-xl sm:px-4 sm:py-2 sm:text-sm ${
+            className={`min-h-10 shrink-0 rounded-[1rem] px-3.5 py-2 text-center text-sm font-semibold transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent sm:min-h-[3rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${
               active
-                ? "bg-brand-primary text-white shadow-md"
-                : "text-neutral-300 hover:bg-neutral-700/60 hover:text-white"
+                ? "text-white"
+                : "bg-transparent text-white/70 hover:bg-white/[0.08] hover:text-white"
             }`}
+            style={
+              active
+                ? {
+                    backgroundColor: accentColor,
+                    boxShadow: `0 18px 30px -22px ${accentColor}`,
+                  }
+                : undefined
+            }
           >
             {label}
           </Link>

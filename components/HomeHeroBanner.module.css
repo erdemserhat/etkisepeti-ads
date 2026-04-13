@@ -1,0 +1,278 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(45, 123, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 82% 16%, rgba(11, 89, 208, 0.16), transparent 24%),
+    linear-gradient(135deg, #141425 0%, #1a1c31 52%, #18192a 100%);
+  box-shadow: 0 30px 70px rgba(18, 20, 38, 0.18);
+}
+
+.promoPill {
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--brand-500) 0%,
+    var(--brand-600) 100%
+  );
+  box-shadow: 0 8px 18px rgba(11, 89, 208, 0.18);
+}
+
+.ctaButton {
+  border-radius: 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--brand-500) 0%,
+    var(--brand-700) 100%
+  );
+  box-shadow: 0 12px 24px rgba(11, 89, 208, 0.2);
+}
+
+.ctaButton:hover {
+  box-shadow: 0 15px 28px rgba(11, 89, 208, 0.24);
+}
+
+.couponCard {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.06)
+  );
+  box-shadow: 0 12px 24px rgba(7, 10, 25, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.copyPanel {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.copyPanelButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  align-self: stretch;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease;
+}
+
+.copyPanelButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.copyPanelButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: -2px;
+}
+
+.copyIconSuccess {
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(16, 185, 129, 0.22);
+  color: rgb(167, 243, 208);
+}
+
+.copyIcon {
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 15c6-2 13 3 18 0s9-5 15-1' opacity='.22'/%3E%3Cpath d='M76 20c8 0 10 7 17 7s8-4 13-4' opacity='.18'/%3E%3Cpath d='M27 68c0-8 10-8 10-16s-8-8-8-16' opacity='.18'/%3E%3Cpath d='M74 62c4 0 7 2 9 5s6 5 10 5' opacity='.18'/%3E%3Ccircle cx='18' cy='92' r='4' opacity='.2'/%3E%3Ccircle cx='98' cy='84' r='3' opacity='.2'/%3E%3Ccircle cx='56' cy='32' r='2.5' opacity='.18'/%3E%3Cpath d='M92 104l6-6 6 6-6 6z' opacity='.14'/%3E%3Cpath d='M44 98l5-7 7 5-5 7z' opacity='.14'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.heroGlow {
+  position: absolute;
+  inset: auto auto -7rem -5rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(45, 123, 255, 0.26) 0%,
+    rgba(45, 123, 255, 0) 72%
+  );
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.ribbonPrimary,
+.ribbonSecondary,
+.ribbonTertiary {
+  position: absolute;
+  right: -3.5rem;
+  border-radius: 999px;
+  transform: rotate(-45deg);
+  pointer-events: none;
+}
+
+.ribbonPrimary {
+  top: 1.5rem;
+  width: clamp(12rem, 30vw, 19rem);
+  height: clamp(4.8rem, 12vw, 7rem);
+  background: linear-gradient(
+    135deg,
+    var(--brand-500) 0%,
+    var(--brand-600) 100%
+  );
+  box-shadow: 0 16px 40px rgba(11, 89, 208, 0.28);
+}
+
+.ribbonSecondary {
+  top: 6.7rem;
+  right: 0.5rem;
+  width: clamp(9rem, 22vw, 14rem);
+  height: clamp(4.2rem, 10vw, 6rem);
+  background: linear-gradient(
+    135deg,
+    rgba(45, 123, 255, 0.18),
+    rgba(147, 197, 253, 0.4)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ribbonTertiary {
+  bottom: -4.5rem;
+  right: 11rem;
+  width: clamp(7rem, 18vw, 12rem);
+  height: clamp(3.5rem, 8vw, 5rem);
+  background: linear-gradient(
+    135deg,
+    rgba(11, 89, 208, 0.24),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.visualShell {
+  position: relative;
+  overflow: visible;
+  width: min(100%, 18.75rem);
+  min-height: 23rem;
+  align-self: end;
+  margin-left: auto;
+}
+
+.imageGlow {
+  position: absolute;
+  inset: auto 2% 4% 10%;
+  height: 32%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(45, 123, 255, 0.28), rgba(45, 123, 255, 0));
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+.heroImage {
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.34)) saturate(1.05);
+  mask-image: radial-gradient(circle at 56% 58%, black 67%, transparent 94%);
+  transform: scale(1.28) translateX(-1.25%) translateY(1%);
+}
+
+.figureAccentPrimary,
+.figureAccentSecondary {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.figureAccentPrimary {
+  right: 0.25rem;
+  bottom: 0.35rem;
+  width: 14.5rem;
+  height: 5.4rem;
+  background: linear-gradient(
+    135deg,
+    var(--brand-500) 0%,
+    var(--brand-700) 100%
+  );
+  box-shadow: 0 18px 40px rgba(11, 89, 208, 0.28);
+}
+
+.figureAccentSecondary {
+  right: 1rem;
+  bottom: 1.2rem;
+  width: 10.5rem;
+  height: 4rem;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 123, 255, 0.22),
+    rgba(147, 197, 253, 0.46)
+  );
+  transform: none;
+}
+
+@media (max-width: 1023px) {
+  .ribbonPrimary {
+    top: auto;
+    bottom: -1.5rem;
+    right: -2rem;
+  }
+
+  .ribbonSecondary {
+    top: auto;
+    right: 4rem;
+    bottom: 3rem;
+  }
+
+  .ribbonTertiary {
+    right: auto;
+    left: -1rem;
+    bottom: -3rem;
+  }
+
+  .visualShell {
+    width: min(100%, 16.5rem);
+    min-height: 18rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    border-radius: 1.75rem;
+  }
+
+  .ctaButton,
+  .couponCard {
+    border-radius: 0.95rem;
+  }
+
+  .copyIcon {
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+
+  .visualShell {
+    width: min(100%, 15.5rem);
+    min-height: 14.5rem;
+  }
+
+  .figureAccentPrimary {
+    width: 11rem;
+    height: 4.2rem;
+  }
+
+  .figureAccentSecondary {
+    right: 0.8rem;
+    width: 8rem;
+    height: 3.3rem;
+  }
+}

@@ -26,7 +26,10 @@ export function filterHomePlatforms(
   return out;
 }
 
-export type CategoryWithAction = PlatformCategory & { actionKey: string };
+export type CategoryWithAction = PlatformCategory & {
+  actionKey: string;
+  actionName: string;
+};
 
 const ACTION_ICON_CLASS: Record<string, string> = {
   follow: "fa-solid fa-user",
@@ -46,7 +49,11 @@ export function flattenCategoriesWithActions(
   const out: CategoryWithAction[] = [];
   for (const action of sorted) {
     for (const cat of action.categories) {
-      out.push({ ...cat, actionKey: action.key });
+      out.push({
+        ...cat,
+        actionKey: action.key,
+        actionName: action.name,
+      });
     }
   }
   return out.sort((a, b) => a.orderIndex - b.orderIndex);

@@ -1,4 +1,5 @@
 import { FaqSection } from "@/components/FaqSection";
+import { HomeHeroBanner } from "@/components/HomeHeroBanner";
 import { PlatformCard } from "@/components/PlatformCard";
 import { fetchPlatforms } from "@/lib/etkisepeti-api";
 import { filterHomePlatforms } from "@/lib/platform-utils";
@@ -58,17 +59,26 @@ export default async function HomePage() {
   return (
     <main
       id="main-content"
-      className={`flex flex-1 flex-col gap-6 py-6 md:py-8 ${PAGE_CONTENT_GUTTER}`}
+      className={`flex flex-1 flex-col gap-7 pb-6 pt-4 md:gap-8 md:pb-8 md:pt-3 ${PAGE_CONTENT_GUTTER}`}
     >
-      <ul
-        className="mx-auto grid w-full place-content-center justify-center gap-3 [grid-template-columns:repeat(auto-fill,minmax(min(100%,10rem),10rem))] sm:[grid-template-columns:repeat(auto-fill,minmax(10.5rem,10.5rem))]"
+      <HomeHeroBanner />
+
+      <section
+        id="platform-section"
+        aria-label="Platform listesi"
+        className="scroll-mt-[calc(var(--header-height)+0.75rem)]"
       >
-        {platforms!.map((p) => (
-          <li key={p.id} className="min-w-0">
-            <PlatformCard platform={p} />
-          </li>
-        ))}
-      </ul>
+        <ul
+          id="platform-grid"
+          className="mx-auto grid w-full max-w-[84rem] grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-6"
+        >
+          {platforms!.map((p) => (
+            <li key={p.id} className="min-w-0">
+              <PlatformCard platform={p} />
+            </li>
+          ))}
+        </ul>
+      </section>
       <FaqSection />
     </main>
   );
