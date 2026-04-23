@@ -28,38 +28,42 @@ export function PlatformHeroTabs({
     })),
   ];
 
+  const cssVar = { ["--platform-color" as string]: accentColor };
+
   return (
-    <div
-      className="scrollbar-hidden flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain rounded-[1.35rem]"
-      role="tablist"
-      aria-label="Hizmet filtreleri"
-    >
-      {items.map(({ key, label, href }) => {
-        const active = selectedKey === key;
-        return (
-          <Link
-            key={key}
-            href={href}
-            role="tab"
-            aria-selected={active}
-            className={`min-h-10 shrink-0 rounded-[1rem] px-3.5 py-2 text-center text-sm font-semibold transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-accent sm:min-h-[3rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${
-              active
-                ? "text-white"
-                : "bg-transparent text-white/70 hover:bg-white/[0.08] hover:text-white"
-            }`}
-            style={
-              active
-                ? {
-                    backgroundColor: accentColor,
-                    boxShadow: `0 18px 30px -22px ${accentColor}`,
-                  }
-                : undefined
-            }
-          >
-            {label}
-          </Link>
-        );
-      })}
+    <div className="mb-4 sm:mb-6">
+      <div className="scrollbar-hidden overflow-x-auto">
+        <div
+          className="inline-flex min-w-max items-center gap-2 rounded-md border border-white/10 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_18px_38px_rgba(7,10,24,0.12)] backdrop-blur-md"
+          style={{
+            ...cssVar,
+            background:
+              "linear-gradient(135deg, #141425 0%, #1a1c31 52%, #18192a 100%)",
+          }}
+          role="tablist"
+          aria-label="Hizmet filtreleri"
+        >
+          {items.map(({ key, label, href }) => {
+            const active = selectedKey === key;
+            return (
+              <Link
+                key={key}
+                href={href}
+                role="tab"
+                aria-selected={active}
+                className={
+                  active
+                    ? "whitespace-nowrap rounded-md bg-[var(--platform-color)] px-5 py-3 text-[14px] font-semibold tracking-[-0.01em] text-white shadow-[0_14px_28px_rgba(0,0,0,0.28)] transition-all duration-200 sm:px-6 sm:py-3.5 sm:text-[15px]"
+                    : "whitespace-nowrap rounded-md px-5 py-3 text-[14px] font-semibold tracking-[-0.01em] text-white/70 transition-all duration-200 hover:bg-white/[0.06] hover:text-white sm:px-6 sm:py-3.5 sm:text-[15px]"
+                }
+                style={cssVar}
+              >
+                {label}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

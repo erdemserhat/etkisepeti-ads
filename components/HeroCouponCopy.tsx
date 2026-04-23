@@ -3,11 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./HomeHeroBanner.module.css";
 
+type Variant = "minimal" | "rich";
+
 type Props = {
   code: string;
+  variant?: Variant;
 };
 
-export function HeroCouponCopy({ code }: Props) {
+export function HeroCouponCopy({ code, variant = "minimal" }: Props) {
   const [copied, setCopied] = useState(false);
   const resetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -48,16 +51,41 @@ export function HeroCouponCopy({ code }: Props) {
     }
   }, [code]);
 
+  const ariaLabel = copied ? "Kupon kodu kopyalandı" : "Kupon kodunu kopyala";
+
+  if (variant === "rich") {
+    return (
+      <button
+        type="button"
+        onClick={copy}
+        className={styles.copyButtonRich}
+        aria-label={ariaLabel}
+      >
+        <span
+          className={`${styles.copyIconRich} text-[1.35rem] transition-colors duration-200 ${
+            copied ? styles.copyIconSuccess : "text-white/92"
+          }`}
+        >
+          {copied ? (
+            <i className="fa-solid fa-check" aria-hidden />
+          ) : (
+            <i className="fa-regular fa-copy" aria-hidden />
+          )}
+        </span>
+      </button>
+    );
+  }
+
   return (
     <button
       type="button"
       onClick={copy}
-      className={styles.copyPanelButton}
-      aria-label={copied ? "Copied" : "Copy coupon code"}
+      className={styles.copyButtonMinimal}
+      aria-label={ariaLabel}
     >
       <span
-        className={`${styles.copyIcon} flex items-center justify-center text-[1.35rem] transition-colors duration-200 ${
-          copied ? styles.copyIconSuccess : "text-white/92"
+        className={`inline-flex items-center justify-center text-[0.85rem] transition-colors duration-200 ${
+          copied ? styles.copyIconSuccess : ""
         }`}
       >
         {copied ? (
@@ -65,6 +93,9 @@ export function HeroCouponCopy({ code }: Props) {
         ) : (
           <i className="fa-regular fa-copy" aria-hidden />
         )}
+      </span>
+      <span className="ml-1.5 text-[11px] font-semibold uppercase tracking-wider">
+        {copied ? "Kopyalandı" : "Kopyala"}
       </span>
     </button>
   );

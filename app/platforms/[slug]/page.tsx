@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CategoryServiceCard } from "@/components/CategoryServiceCard";
 import { ALL_KEY, PlatformHeroTabs } from "@/components/PlatformHeroTabs";
+import {
+  PlatformMobileBanner,
+  PlatformSidebarCard,
+} from "@/components/PlatformSidebarCard";
 import { fetchPlatform } from "@/lib/etkisepeti-api";
 import { getEtkisepetiInternalKey } from "@/lib/env";
 import {
@@ -127,74 +131,79 @@ export default async function PlatformPage({ params, searchParams }: Props) {
   return (
     <main
       id="main-content"
-      className={`flex flex-1 flex-col gap-6 pb-10 pt-4 md:gap-8 md:pb-12 md:pt-6 ${PAGE_CONTENT_GUTTER}`}
+      className="relative flex flex-1 flex-col text-neutral-100"
     >
-      <section
-        className="relative isolate overflow-hidden rounded-[2rem] border border-neutral-800/10 bg-[#131526] px-4 py-5 text-neutral-50 shadow-[0_32px_80px_-46px_rgba(15,23,42,0.8)] sm:px-6 sm:py-6 md:px-7 md:py-8"
-        aria-labelledby="platform-hero-title"
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[240px] overflow-hidden lg:h-[300px]"
+        style={{
+          background:
+            "linear-gradient(135deg, #141425 0%, #1a1c31 52%, #18192a 100%)",
+        }}
       >
-        <span className="platform-card__texture pointer-events-none absolute inset-0 opacity-[0.09]" />
-        <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_34%),radial-gradient(circle_at_84%_18%,rgba(255,255,255,0.1),transparent_28%)]" />
         <span
-          className="pointer-events-none absolute -left-16 bottom-0 h-48 w-48 rounded-full blur-3xl"
-          style={{ backgroundColor: accentColor, opacity: 0.2 }}
+          className="absolute -left-20 top-10 block h-48 w-48 rounded-full blur-3xl"
+          style={{ backgroundColor: accentColor, opacity: 0.16 }}
         />
-        <span className="pointer-events-none absolute -right-14 top-0 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
+        <span className="absolute -right-16 top-16 block h-56 w-56 rounded-full bg-[#2d7bff]/10 blur-3xl" />
+      </span>
 
-        <div className="relative flex flex-col gap-5">
-          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-            <span
-              className="relative flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/[0.08] text-4xl text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-sm sm:h-24 sm:w-24 sm:text-5xl"
-              aria-hidden
-            >
-              <span
-                className="absolute inset-3 rounded-[1.2rem]"
-                style={{ backgroundColor: accentColor }}
+      <div
+        className={`relative z-[1] flex flex-1 flex-col pb-10 pt-4 lg:pb-16 lg:pt-6 ${PAGE_CONTENT_GUTTER}`}
+      >
+        <div className="flex flex-col gap-5 lg:grid lg:grid-cols-[minmax(0,17.5rem)_minmax(0,1fr)] lg:items-start lg:gap-8">
+          <aside className="hidden lg:block">
+            <div className="sticky top-[calc(var(--header-height)+1rem)]">
+              <PlatformSidebarCard
+                platform={platform}
+                categoryCount={categories.length}
+                title={heroTitle}
               />
-              <span className="platform-card__texture absolute inset-3 rounded-[1.2rem] opacity-30" />
-              <i
-                className={`${platform.iconClass} relative z-[1] drop-shadow-[0_4px_20px_rgba(0,0,0,0.24)]`}
-              />
-            </span>
-            <div className="min-w-0 flex-1">
-              <h1
-                id="platform-hero-title"
-                className="mt-2 text-2xl font-black leading-tight tracking-tight text-white sm:text-[2.2rem] md:text-[2.85rem]"
-              >
-                {heroTitle}
-              </h1>
             </div>
-          </div>
+          </aside>
 
-          <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.06] p-2 backdrop-blur-sm">
+          <div className="min-w-0 flex-1">
+            <h1 className="sr-only">{heroTitle}</h1>
+
+            <div className="-mx-4 -mt-4 mb-4 md:-mx-5 lg:hidden">
+              <PlatformMobileBanner
+                platform={platform}
+                categoryCount={categories.length}
+                title={heroTitle}
+              />
+            </div>
+
             <PlatformHeroTabs
               platformSlug={platform.slug}
               actions={actions}
               selectedKey={selectedKey}
               accentColor={accentColor}
             />
+
+            <section aria-labelledby="categories-grid-heading">
+              <h2 id="categories-grid-heading" className="sr-only">
+                Hizmet kategorileri
+              </h2>
+              {categories.length === 0 ? (
+                <p className="text-sm text-neutral-600">
+                  Bu görünümde kategori yok.
+                </p>
+              ) : (
+                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                  {categories.map((cat) => (
+                    <li key={cat.id}>
+                      <CategoryServiceCard
+                        category={cat}
+                        accentColor={accentColor}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
           </div>
         </div>
-      </section>
-
-      <section aria-labelledby="categories-grid-heading">
-        <h2 id="categories-grid-heading" className="sr-only">
-          Hizmet kategorileri
-        </h2>
-        {categories.length === 0 ? (
-          <p className="text-sm text-neutral-600">
-            Bu görünümde kategori yok.
-          </p>
-        ) : (
-          <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-            {categories.map((cat) => (
-              <li key={cat.id}>
-                <CategoryServiceCard category={cat} accentColor={accentColor} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      </div>
     </main>
   );
 }

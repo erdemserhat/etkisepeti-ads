@@ -1,6 +1,7 @@
 import { FaqSection } from "@/components/FaqSection";
 import { HomeHeroBanner } from "@/components/HomeHeroBanner";
 import { PlatformCard } from "@/components/PlatformCard";
+import { TrustBadgesBanner } from "@/components/TrustBadgesBanner";
 import { fetchPlatforms } from "@/lib/etkisepeti-api";
 import { filterHomePlatforms } from "@/lib/platform-utils";
 import { getEtkisepetiInternalKey } from "@/lib/env";
@@ -59,27 +60,40 @@ export default async function HomePage() {
   return (
     <main
       id="main-content"
-      className={`flex flex-1 flex-col gap-7 pb-6 pt-4 md:gap-8 md:pb-8 md:pt-3 ${PAGE_CONTENT_GUTTER}`}
+      className="flex flex-1 flex-col gap-7 pb-6 pt-4 md:gap-8 md:pb-8 md:pt-3"
     >
-      <HomeHeroBanner />
+      <div className={PAGE_CONTENT_GUTTER}>
+        <div className="flex flex-col gap-2 md:gap-2.5">
+          <HomeHeroBanner />
+          <TrustBadgesBanner />
+        </div>
+      </div>
 
       <section
         id="platform-section"
         aria-label="Platform listesi"
-        className="scroll-mt-[calc(var(--header-height)+0.75rem)]"
+        className="w-full scroll-mt-[calc(var(--header-height)+0.75rem)]"
       >
-        <ul
-          id="platform-grid"
-          className="mx-auto grid w-full max-w-[84rem] grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-6"
-        >
-          {platforms!.map((p) => (
-            <li key={p.id} className="min-w-0">
-              <PlatformCard platform={p} />
-            </li>
-          ))}
-        </ul>
+        <div className={PAGE_CONTENT_GUTTER}>
+          <ul
+            id="platform-grid"
+            className="mx-auto flex w-full max-w-[84rem] flex-wrap justify-center gap-4 sm:gap-5"
+          >
+            {platforms!.map((p) => (
+              <li
+                key={p.id}
+                className="min-w-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.833rem)] lg:w-[calc(25%-0.9375rem)] xl:w-[calc(20%-1rem)]"
+              >
+                <PlatformCard platform={p} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
-      <FaqSection />
+
+      <div className={PAGE_CONTENT_GUTTER}>
+        <FaqSection />
+      </div>
     </main>
   );
 }

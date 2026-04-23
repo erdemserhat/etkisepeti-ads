@@ -1,6 +1,84 @@
-.hero {
+/* ----------------------------------------------------------------------
+ * Mobile: minimal banner
+ * ---------------------------------------------------------------------- */
+
+.heroMobile {
   position: relative;
   overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(45, 123, 255, 0.16),
+      transparent 55%
+    ),
+    linear-gradient(135deg, #141425 0%, #1a1c31 60%, #18192a 100%);
+}
+
+.promoPillMobile {
+  border-radius: 999px;
+  background: rgba(45, 123, 255, 0.14);
+  border: 1px solid rgba(45, 123, 255, 0.35);
+  color: #bfdbfe;
+  letter-spacing: 0.04em;
+}
+
+.ctaButtonMobile {
+  border-radius: 0.75rem;
+  background: linear-gradient(
+    135deg,
+    var(--brand-500) 0%,
+    var(--brand-700) 100%
+  );
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.ctaButtonMobile:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.couponCardMobile {
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+}
+
+.copyButtonMinimal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  padding: 0 0.9rem;
+  border: none;
+  border-left: 1px dashed rgba(255, 255, 255, 0.14);
+  margin: 0;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.copyButtonMinimal:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.copyButtonMinimal:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: -2px;
+}
+
+/* ----------------------------------------------------------------------
+ * Desktop: original rich banner with ribbons, accents and full decor
+ * ---------------------------------------------------------------------- */
+
+.heroDesktop {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
     radial-gradient(circle at 14% 18%, rgba(45, 123, 255, 0.18), transparent 24%),
@@ -9,7 +87,17 @@
   box-shadow: 0 30px 70px rgba(18, 20, 38, 0.18);
 }
 
-.promoPill {
+.heroDesktop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 15c6-2 13 3 18 0s9-5 15-1' opacity='.22'/%3E%3Cpath d='M76 20c8 0 10 7 17 7s8-4 13-4' opacity='.18'/%3E%3Cpath d='M27 68c0-8 10-8 10-16s-8-8-8-16' opacity='.18'/%3E%3Cpath d='M74 62c4 0 7 2 9 5s6 5 10 5' opacity='.18'/%3E%3Ccircle cx='18' cy='92' r='4' opacity='.2'/%3E%3Ccircle cx='98' cy='84' r='3' opacity='.2'/%3E%3Ccircle cx='56' cy='32' r='2.5' opacity='.18'/%3E%3Cpath d='M92 104l6-6 6 6-6 6z' opacity='.14'/%3E%3Cpath d='M44 98l5-7 7 5-5 7z' opacity='.14'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.promoPillDesktop {
   border-radius: 999px;
   background: linear-gradient(
     135deg,
@@ -19,7 +107,7 @@
   box-shadow: 0 8px 18px rgba(11, 89, 208, 0.18);
 }
 
-.ctaButton {
+.ctaButtonDesktop {
   border-radius: 1rem;
   background: linear-gradient(
     135deg,
@@ -29,11 +117,11 @@
   box-shadow: 0 12px 24px rgba(11, 89, 208, 0.2);
 }
 
-.ctaButton:hover {
+.ctaButtonDesktop:hover {
   box-shadow: 0 15px 28px rgba(11, 89, 208, 0.24);
 }
 
-.couponCard {
+.couponCardDesktop {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
   background: linear-gradient(
@@ -45,11 +133,7 @@
   backdrop-filter: blur(14px);
 }
 
-.copyPanel {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.copyPanelButton {
+.copyButtonRich {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,37 +148,30 @@
   transition: background 0.2s ease;
 }
 
-.copyPanelButton:hover {
+.copyButtonRich:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
-.copyPanelButton:focus-visible {
+.copyButtonRich:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.45);
   outline-offset: -2px;
+}
+
+.copyIconRich {
+  width: 3.4rem;
+  height: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .copyIconSuccess {
   border-color: rgba(52, 211, 153, 0.45);
   background: rgba(16, 185, 129, 0.22);
   color: rgb(167, 243, 208);
-}
-
-.copyIcon {
-  width: 3.4rem;
-  height: 3.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 15c6-2 13 3 18 0s9-5 15-1' opacity='.22'/%3E%3Cpath d='M76 20c8 0 10 7 17 7s8-4 13-4' opacity='.18'/%3E%3Cpath d='M27 68c0-8 10-8 10-16s-8-8-8-16' opacity='.18'/%3E%3Cpath d='M74 62c4 0 7 2 9 5s6 5 10 5' opacity='.18'/%3E%3Ccircle cx='18' cy='92' r='4' opacity='.2'/%3E%3Ccircle cx='98' cy='84' r='3' opacity='.2'/%3E%3Ccircle cx='56' cy='32' r='2.5' opacity='.18'/%3E%3Cpath d='M92 104l6-6 6 6-6 6z' opacity='.14'/%3E%3Cpath d='M44 98l5-7 7 5-5 7z' opacity='.14'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 120px 120px;
-  opacity: 0.22;
-  pointer-events: none;
 }
 
 .heroGlow {
@@ -242,37 +319,5 @@
   .visualShell {
     width: min(100%, 16.5rem);
     min-height: 18rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero {
-    border-radius: 1.75rem;
-  }
-
-  .ctaButton,
-  .couponCard {
-    border-radius: 0.95rem;
-  }
-
-  .copyIcon {
-    width: 3.1rem;
-    height: 3.1rem;
-  }
-
-  .visualShell {
-    width: min(100%, 15.5rem);
-    min-height: 14.5rem;
-  }
-
-  .figureAccentPrimary {
-    width: 11rem;
-    height: 4.2rem;
-  }
-
-  .figureAccentSecondary {
-    right: 0.8rem;
-    width: 8rem;
-    height: 3.3rem;
   }
 }

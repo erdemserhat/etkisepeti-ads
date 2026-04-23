@@ -42,6 +42,90 @@ export function getCategoryIconClass(actionKey: string): string {
   return ACTION_ICON_CLASS[actionKey] ?? "fa-solid fa-layer-group";
 }
 
+type IconMatchRule = { terms: string[]; icon: string };
+
+const CATEGORY_ICON_RULES: IconMatchRule[] = [
+  {
+    terms: [
+      "follow",
+      "follower",
+      "followers",
+      "takip",
+      "takipci",
+      "abone",
+      "subscriber",
+      "member",
+    ],
+    icon: "fa-solid fa-user",
+  },
+  {
+    terms: ["like", "likes", "begeni", "favorite", "favourite", "heart"],
+    icon: "fa-solid fa-heart",
+  },
+  {
+    terms: ["view", "views", "izlen", "watch", "stream", "play", "dinlen"],
+    icon: "fa-solid fa-play",
+  },
+  {
+    terms: ["save", "saved", "kaydet", "bookmark"],
+    icon: "fa-solid fa-bookmark",
+  },
+  {
+    terms: ["comment", "comments", "yorum", "reply"],
+    icon: "fa-solid fa-comment",
+  },
+  {
+    terms: ["share", "shares", "paylas", "paylasim"],
+    icon: "fa-solid fa-share-nodes",
+  },
+  {
+    terms: ["repost", "retweet", "yeniden"],
+    icon: "fa-solid fa-retweet",
+  },
+  {
+    terms: ["download", "downloads", "indir", "indirme"],
+    icon: "fa-solid fa-download",
+  },
+];
+
+function normalizeForMatch(value?: string | null): string {
+  return (value || "")
+    .toLocaleLowerCase("tr-TR")
+    .replaceAll("ç", "c")
+    .replaceAll("ğ", "g")
+    .replaceAll("ı", "i")
+    .replaceAll("ö", "o")
+    .replaceAll("ş", "s")
+    .replaceAll("ü", "u");
+}
+
+export function resolveCategoryIconClass(
+  categoryName: string,
+  actionKey?: string,
+  actionName?: string
+): string {
+  const fromName = normalizeForMatch(categoryName);
+  const matchedByName = CATEGORY_ICON_RULES.find((rule) =>
+    rule.terms.some((term) => fromName.includes(term))
+  );
+  if (matchedByName) return matchedByName.icon;
+
+  for (const source of [actionKey, actionName]) {
+    if (!source) continue;
+    const normalized = normalizeForMatch(source);
+    const matched = CATEGORY_ICON_RULES.find((rule) =>
+      rule.terms.some((term) => normalized.includes(term))
+    );
+    if (matched) return matched.icon;
+  }
+
+  if (actionKey && ACTION_ICON_CLASS[actionKey]) {
+    return ACTION_ICON_CLASS[actionKey];
+  }
+
+  return "fa-solid fa-layer-group";
+}
+
 export function flattenCategoriesWithActions(
   actions: PlatformAction[]
 ): CategoryWithAction[] {
