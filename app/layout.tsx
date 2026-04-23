@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { LiveSupportWidget } from "@/components/LiveSupportWidget";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { GOOGLE_ADS_ID } from "@/lib/google-ads";
@@ -53,6 +54,7 @@ export default function RootLayout({
           {children}
         </div>
         <SiteFooter />
+        <LiveSupportWidget />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
