@@ -104,32 +104,58 @@ function AvatarCluster() {
   );
 }
 
+export function TrustRatingsRow({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <ul
+      className={`${styles.ratings}${className ? ` ${className}` : ""}`}
+      role="list"
+      style={style}
+    >
+      {RATINGS.map((r) => (
+        <li key={r.id} className={styles.ratingCard}>
+          <div className="flex min-w-0 flex-col items-center gap-1">
+            {!r.hideStars && <StarRow filled={r.stars} />}
+            {r.renderLogo()}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function TrustStripContent({
+  hideRatings = false,
+}: {
+  hideRatings?: boolean;
+} = {}) {
+  return (
+    <div className={styles.inner}>
+      <div className={styles.leftGroup}>
+        <AvatarCluster />
+        <h2 className={styles.heading}>
+          <span>Sektörde Müşteri Desteği</span>
+          <span>En Kaliteli Firmayız.</span>
+        </h2>
+      </div>
+
+      {!hideRatings && <TrustRatingsRow />}
+    </div>
+  );
+}
+
 export function TrustBadgesBanner() {
   return (
     <section
       aria-label="Müşteri memnuniyeti ve değerlendirmeler"
       className={styles.banner}
     >
-      <div className={styles.inner}>
-        <div className={styles.leftGroup}>
-          <AvatarCluster />
-          <h2 className={styles.heading}>
-            <span>Sektörde Müşteri Desteği</span>
-            <span>En Kaliteli Firmayız.</span>
-          </h2>
-        </div>
-
-        <ul className={styles.ratings} role="list">
-          {RATINGS.map((r) => (
-            <li key={r.id} className={styles.ratingCard}>
-              <div className="flex min-w-0 flex-col items-center gap-1">
-                {!r.hideStars && <StarRow filled={r.stars} />}
-                {r.renderLogo()}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <TrustStripContent />
     </section>
   );
 }

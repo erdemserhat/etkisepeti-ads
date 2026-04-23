@@ -63,9 +63,11 @@ export default async function HomePage() {
       className="flex flex-1 flex-col gap-7 pb-6 pt-4 md:gap-8 md:pb-8 md:pt-3"
     >
       <div className={PAGE_CONTENT_GUTTER}>
-        <div className="flex flex-col gap-2 md:gap-2.5">
+        <div className="flex flex-col gap-2">
           <HomeHeroBanner />
-          <TrustBadgesBanner />
+          <div className="md:hidden">
+            <TrustBadgesBanner />
+          </div>
         </div>
       </div>
 

@@ -62,7 +62,7 @@ export function HeroCouponCopy({ code, variant = "minimal" }: Props) {
         aria-label={ariaLabel}
       >
         <span
-          className={`${styles.copyIconRich} text-[1.35rem] transition-colors duration-200 ${
+          className={`${styles.copyIconRich} transition-colors duration-200 ${
             copied ? styles.copyIconSuccess : "text-white/92"
           }`}
         >
